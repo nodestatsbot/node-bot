@@ -1,4 +1,4 @@
-> **🚧 THIS BOT IS STILL IN DEVELOPMENT, IT DOESN'T HAVE FULL FUNCTIONALITY YET 🚧**
+> **🚧 THIS BOT IS STILL IN DEVELOPMENT, IT DOESN'T HAVE FULL FUNCTIONALITY YET 🚧**<br>
 > **🚧 IF YOU FIND A BUG, PLEASE REPORT IT 🚧**
 # nodestats-bot
 An advanced bot for your hosting to monitor nodes' stats.
