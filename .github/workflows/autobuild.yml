@@ -1,0 +1,32 @@
+name: "Build TypeScript"
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout repository"
+        uses: actions/checkout@v2
+
+      - name: "Remove dist folder"
+        run: |
+          rm -rf dist
+
+      - name: "Install dependencies"
+        run: |
+          npm install
+
+      - name: "Build"
+        run: |
+          npm run build
+
+      - name: "Commit changes"
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Build TypeScript"
+          file_pattern: "dist/**"
+          push_options: "--force"
