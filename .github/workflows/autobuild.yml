@@ -12,10 +12,6 @@ jobs:
       - name: "Checkout repository"
         uses: actions/checkout@v2
 
-      - name: "Remove dist folder"
-        run: |
-          rm -rf dist
-
       - name: "Install dependencies"
         run: |
           npm install
