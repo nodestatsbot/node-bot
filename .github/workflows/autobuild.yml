@@ -29,4 +29,5 @@ jobs:
         with:
           commit_message: "Build TypeScript"
           file_pattern: "dist/**"
+          add_options: "--force"
           push_options: "--force"
