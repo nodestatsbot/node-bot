@@ -17,7 +17,7 @@ export const handleMessage = async (message: Message): Promise<void> => {
     const command = args.shift()?.toLowerCase();
     if (!command) return;
 
-    if (["all", config.node].includes(command)) {
+    if (["all", config.node.toLowerCase()].includes(command)) {
         switch (args[0]?.toLowerCase()) {
             case "cpu":
                 break;
@@ -35,8 +35,10 @@ export const handleMessage = async (message: Message): Promise<void> => {
                 const cpu = await utils.cpu.usage();
                 const ram = await si.mem();
                 const disk = await si.fsSize();
-                const disk_used = disk.reduce((acc, cur) => acc + cur.used, 0);
-                const disk_total = disk.reduce((acc, cur) => acc + cur.size, 0);
+                const disk_used = disk[0].used;
+                const disk_total = disk[0].size;
+                // const disk_used = disk.reduce((acc, cur) => acc + cur.used, 0);
+                // const disk_total = disk.reduce((acc, cur) => acc + cur.size, 0);
 
                 await msg.edit({
                     content: null,
