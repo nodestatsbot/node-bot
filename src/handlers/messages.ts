@@ -18,35 +18,47 @@ export const handleMessage = async (message: Message): Promise<void> => {
     if (!command) return;
 
     if (["all", config.node].includes(command)) {
-        logger.info(`${message.author.tag} (${message.author.id}) used ${command} command.`);
+        switch (args[0]?.toLowerCase()) {
+            case "cpu":
+                break;
+            case "ram":
+                break;
+            case "disk":
+                break;
+            case "network":
+                break;
+            default:
+                logger.info(`${message.author.tag} (${message.author.id}) used "${command} ${args[0]}" command.`);
 
-        const msg = await message.reply(`Getting node info...`);
+                const msg = await message.reply(`Getting node info...`);
 
-        const cpu = await utils.cpu.usage();
-        const ram = await si.mem();
-        const disk = await si.fsSize();
-        const disk_used = disk.reduce((acc, cur) => acc + cur.used, 0);
-        const disk_total = disk.reduce((acc, cur) => acc + cur.size, 0);
+                const cpu = await utils.cpu.usage();
+                const ram = await si.mem();
+                const disk = await si.fsSize();
+                const disk_used = disk.reduce((acc, cur) => acc + cur.used, 0);
+                const disk_total = disk.reduce((acc, cur) => acc + cur.size, 0);
 
-        await msg.edit({
-            content: null,
-            embeds: [{
-                title: "Node info | " + config.node,
-                description: [
-                    "```",
-                    `CPU: ${cpu.toFixed(2)}%`,
-                    `RAM: ${bytesToSize(ram.active)}/${bytesToSize(ram.total)}`,
-                    `Disk: ${bytesToSize(disk_used)}/${bytesToSize(disk_total)}`,
-                    `Uptime: ${prettyms(parseInt(si.time().uptime) * 1000)}`,
-                    "```"
-                ].join("\n")
-            }],
-            components: [
-                new MessageActionRow().addComponents(
-                    new MessageButton().setCustomId("deleteReply").setLabel("🗑️").setStyle("DANGER")
-                )
-            ]
-        });
+                await msg.edit({
+                    content: null,
+                    embeds: [{
+                        title: "Node info | " + config.node,
+                        description: [
+                            "```",
+                            `CPU: ${cpu.toFixed(2)}%`,
+                            `RAM: ${bytesToSize(ram.active)}/${bytesToSize(ram.total)}`,
+                            `Disk: ${bytesToSize(disk_used)}/${bytesToSize(disk_total)}`,
+                            `Uptime: ${prettyms(si.time().uptime * 1000)}`,
+                            "```"
+                        ].join("\n")
+                    }],
+                    components: [
+                        new MessageActionRow().addComponents(
+                            new MessageButton().setCustomId("deleteReply").setLabel("🗑️").setStyle("DANGER")
+                        )
+                    ]
+                });
+                break;
+        };
     };
 };
 
