@@ -1,0 +1,18 @@
+{
+    "extends": [
+        "config:base",
+        ":preserveSemverRanges"
+    ],
+    "labels": [
+        "dependencies"
+    ],
+    "additionalReviewers": [
+        "itzJOHv"
+    ],
+    "timezone": "Europe/Kiev",
+    "schedule": "at any time",
+    "lockFileMaintenance": {
+        "enabled": true,
+        "schedule": "at any time"
+    }
+}
