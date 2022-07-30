@@ -28,7 +28,7 @@ export const handleMessage = async (message: Message): Promise<void> => {
             case "network":
                 break;
             default:
-                logger.info(`${message.author.tag} (${message.author.id}) used "${command} ${args[0]}" command.`);
+                logger.info(`${message.author.tag} (${message.author.id}) used "${command}${args[0] ? ` ${args[0]}` : ""}" command.`);
 
                 const msg = await message.reply(`Getting node info...`);
 
