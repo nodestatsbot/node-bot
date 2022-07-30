@@ -198,4 +198,5 @@ out
 # End of https://www.toptal.com/developers/gitignore/api/linux,node,git,visualstudiocode
 
 ### Custom ###
+dist/
 config.js

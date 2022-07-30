@@ -9,15 +9,18 @@ An advanced bot for your hosting to monitor nodes' stats.
 # Clone the repo
 git clone https://github.com/nodestatsbot/node-bot.git
 
-# Install dependencies
-npm install
-
 # Copy config file
 cp config.example.js config.js
 # Fill in all values in config.js
 
+# Install dependencies
+yarn
+
+# Build typescript files  !!! THIS SHOULD BE EXECUTED AFTER EACH UPDATE !!!
+yarn build
+
 # Start the bot
-npm start
+yarn start
 # OR
 node .
 ```
