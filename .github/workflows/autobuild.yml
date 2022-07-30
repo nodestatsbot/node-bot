@@ -3,7 +3,7 @@ name: "Build TypeScript"
 on:
   push:
     branches:
-      - master
+      - someunexistedbranch
 
 jobs:
   build:
