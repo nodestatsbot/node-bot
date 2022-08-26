@@ -3,6 +3,7 @@ import type { Config } from "../@types/Config";
 import { Client, GatewayIntentBits, Options, Partials } from "discord.js";
 import { handleMessage } from "./handlers/messages";
 import { handleInteraction } from "./handlers/interactions";
+import { inspect } from "util";
 const config = require("../config") as Config;
 
 const client = new Client({
@@ -27,8 +28,8 @@ client.once("ready", () => {
 client.on("messageCreate", (m) => { handleMessage(m); });
 client.on("interactionCreate", (i) => { handleInteraction(i); });
 
-client.login(config.token).catch(() => {
-    logger.error("Failed to login. Is the token correct?");
+client.login(config.token).catch((e) => {
+    logger.error("Failed to login. Is the token correct? Error:\n" + inspect(e));
     process.exit(1);
 });
 
