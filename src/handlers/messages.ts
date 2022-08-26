@@ -9,7 +9,7 @@ const config = require("../../config") as Config;
 export const handleMessage = async (message: Message): Promise<void> => {
     if (
         message.author.bot ||
-        message.channel.type === "DM" ||
+        message.channel.isDMBased() ||
         !message.content.startsWith(config.prefix)
     ) return;
 

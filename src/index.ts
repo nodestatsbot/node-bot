@@ -1,13 +1,17 @@
 import { logger } from "./handlers/logger";
 import type { Config } from "../@types/Config";
-import { Client, Options } from "discord.js";
+import { Client, GatewayIntentBits, Options, Partials } from "discord.js";
 import { handleMessage } from "./handlers/messages";
 import { handleInteraction } from "./handlers/interactions";
 const config = require("../config") as Config;
 
 const client = new Client({
-    intents: ["GUILDS", "GUILD_MESSAGES"],
-    partials: ["MESSAGE", "CHANNEL"],
+    intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent
+    ],
+    partials: [Partials.Message, Partials.Channel],
     makeCache: Options.cacheWithLimits({
         MessageManager: 0,
         UserManager: 0,
