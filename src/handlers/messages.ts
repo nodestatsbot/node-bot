@@ -1,4 +1,4 @@
-import { Message, MessageActionRow, MessageButton } from "discord.js";
+import { Message } from "discord.js";
 import prettyms from "pretty-ms";
 import si from "systeminformation";
 import utils from "node-os-utils";
@@ -30,8 +30,6 @@ export const handleMessage = async (message: Message): Promise<void> => {
             default:
                 logger.info(`${message.author.tag} (${message.author.id}) used "${command}${args[0] ? ` ${args[0]}` : ""}" command.`);
 
-                const msg = await message.reply(`Getting node info...`);
-
                 const cpu = await utils.cpu.usage();
                 const ram = await si.mem();
                 const disk = await si.fsSize();
@@ -40,8 +38,7 @@ export const handleMessage = async (message: Message): Promise<void> => {
                 // const disk_used = disk.reduce((acc, cur) => acc + cur.used, 0);
                 // const disk_total = disk.reduce((acc, cur) => acc + cur.size, 0);
 
-                await msg.edit({
-                    content: null,
+                await message.channel.send({
                     embeds: [{
                         title: "Node info | " + config.node,
                         description: [
@@ -52,12 +49,7 @@ export const handleMessage = async (message: Message): Promise<void> => {
                             `Uptime: ${prettyms(si.time().uptime * 1000)}`,
                             "```"
                         ].join("\n")
-                    }],
-                    components: [
-                        new MessageActionRow().addComponents(
-                            new MessageButton().setCustomId("deleteReply").setLabel("🗑️").setStyle("DANGER")
-                        )
-                    ]
+                    }]
                 });
                 break;
         };
