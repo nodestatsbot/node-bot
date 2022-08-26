@@ -29,6 +29,11 @@ client.on("messageCreate", (m) => { handleMessage(m); });
 client.on("interactionCreate", (i) => { handleInteraction(i); });
 
 client.login(config.token).catch((e) => {
+    if (e.code === "DisallowedIntents") {
+        logger.error("Client is missing MessageContent intent. Please enable it on the developer portal.");
+        process.exit(1);
+    };
+
     logger.error("Failed to login. Is the token correct? Error:\n" + inspect(e));
     process.exit(1);
 });
