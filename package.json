@@ -27,7 +27,7 @@
     "@types/node": "^16.11.43",
     "discord.js": "^14.3.0",
     "node-os-utils": "^1.3.7",
-    "pretty-ms": "^7.0.1",
+    "pretty-ms": "^9.0.0",
     "systeminformation": "^5.12.6",
     "winston": "^3.8.1",
     "winston-daily-rotate-file": "^4.7.1"
