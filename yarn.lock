@@ -338,9 +338,9 @@ strtok3@^7.0.0-alpha.9:
     peek-readable "^5.0.0"
 
 systeminformation@^5.12.6:
-  version "5.12.6"
-  resolved "https://registry.yarnpkg.com/systeminformation/-/systeminformation-5.12.6.tgz#b75d7aaf9f5da32439fc633d2be9eb741691d200"
-  integrity sha512-FkCvT5BOuH1OE3+8lFM25oXIYJ0CM8kq4Wgvz2jyBTrsOIgha/6gdJXgbF4rv+g0j/5wJqQLDKan7kc/p7uIvw==
+  version "5.27.10"
+  resolved "https://registry.yarnpkg.com/systeminformation/-/systeminformation-5.27.10.tgz#0129d9a5f1f26d3d2e9698962302896472324edf"
+  integrity sha512-jkeOerLSwLZqJrPHCYltlKHu0PisdepIuS4GwjFFtgQUG/5AQPVZekkECuULqdP0cgrrIHW8Nl8J7WQXo5ypEg==
 
 text-hex@1.0.x:
   version "1.0.0"
